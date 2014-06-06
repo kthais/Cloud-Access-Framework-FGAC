@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="reportAdministratorRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read permission to administration on Project Reports.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Project Reports</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="actionCheck">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>

@@ -1,0 +1,3138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PolicySet xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:permit-overrides" PolicySetId="Test" Version="2.0">
+<Target />
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="administrationResearchRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read Permission to the administration on the Research Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Research Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="administrationJournalRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read Permission to the administration on the Journal.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Journals</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="administrationJournalWrite" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing write Permission to the administration on the Journal.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Journals</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+     <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">(ORIGINAL|LICENSE|license.txt|None)</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Write</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="administrationJournalDelete" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing delete Permission to the administration on the Journal.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Journals</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="assignmentStudentRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read permission on Assignments to the Students</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Assignments</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="assignmentFacultyRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read permission on Assignment to the faculty.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Assignments</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="assignmentAdministratorRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read permission to administrator on Assignments</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Assignments</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+  </Target>
+  <Rule Effect="Deny" RuleId="actionAction">
+    <Description>Action MUST be read.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="assignmentStudentWrite" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing write permission to Students on Assignment.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Assignments</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">(ORIGINAL|LICENSE|license.txt|None)</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Write</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Description>Request must be generated before the Submission Time.</Description>
+    <Target />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="assignmentFacultyDelete" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing delete permission on assignment to Faculty.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Assignments</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Description>Request must be generated after Submission Time.</Description>
+    <Target />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="assignmentStudentDelete" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing delete permission to the students on Assignments.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Assignments</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Description>Request must be generated after Submission Time.</Description>
+    <Target />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="checkingTA">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">TA</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-two" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+	
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="AuthorizedAdministratorpolicy" Version="2.0" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+    <Description>Policy to check write access to administrator on Past Papers.</Description>
+    <Target>
+        <Subjects>
+            <Subject>
+                <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+                    <SubjectAttributeDesignator SubjectCategory="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                </SubjectMatch>
+            </Subject>
+        </Subjects>
+        <Resources>
+            <Resource>
+                <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Past Paper</AttributeValue>
+                    <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                </ResourceMatch>
+            </Resource>
+        </Resources>
+        <Actions>
+            <Action>
+                <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Write</AttributeValue>
+                    <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                </ActionMatch>
+            </Action>
+        </Actions>
+    </Target>
+    <Rule RuleId="AdministrationCheckRule" Effect="Deny">
+        <Description>Rule to check administration write access on Past Papers.</Description>
+        <Condition>
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Apply>
+                </Apply>
+            </Apply>
+        </Condition>
+    </Rule>
+    <Rule RuleId="DefaultRule" Effect="Permit">
+        <Description>Default Permit rule for all policies.</Description>
+        <Condition>
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Apply>
+                </Apply>
+            </Apply>
+        </Condition>
+    </Rule>
+</Policy>
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="AuthorizedController" Version="2.0" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+    <Description>Policy to check Write permission to Controller group on Quiz.</Description>
+    <Target>
+        <Subjects>
+            <Subject>
+                <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+                    <SubjectAttributeDesignator SubjectCategory="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                </SubjectMatch>
+            </Subject>
+        </Subjects>
+        <Resources>
+            <Resource>
+                <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Quiz</AttributeValue>
+                    <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                </ResourceMatch>
+            </Resource>
+        </Resources>
+        <Actions>
+            <Action>
+                <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Write</AttributeValue>
+                    <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                </ActionMatch>
+            </Action>
+        </Actions>
+    </Target>
+    <Rule RuleId="DefaultRule" Effect="Permit">
+        <Description>Default Permit rule for all policies.</Description>
+        <Condition>
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+                </Apply>
+            </Apply>
+        </Condition>
+    </Rule>
+    <Rule RuleId="AuthorizedController" Effect="Deny">
+        <Description>Rule to check controller authorization group.</Description>
+        <Condition>
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+                </Apply>
+            </Apply>
+        </Condition>
+    </Rule>
+</Policy>
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="deleteAdministrationPaper" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing delete permission to the students on Previous Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Past Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="deleteFacultyPaper" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing delete permission to the Faculty on Previous Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Past Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="deleteStudentQuiz" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing delete permission to the Student on Quiz.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Quiz</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">TA</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-two" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="deleteFacultyQuiz" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing delete permission to the Faculty on Quiz.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Quiz</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="facultyResearchRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read Permission to the faculty on the Research Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Research Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="facultyJournalRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read Permission to the faculty on the Journal.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Journals</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="facultyResearchWrite" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing Write Permission to the faculty on the Research Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Research Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">(ORIGINAL|LICENSE|license.txt|None)</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Write</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="facultyResearchDelete" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing Delete Permission to the faculty on the Research Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Research Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="groupReadWriteCommunities" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read and write to all group one users on all communities.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Guest</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Academic</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Evaluation</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Research</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Write</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+	
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="guestResearchRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing Read Permission to the Guest on the Research Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Guest</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Research Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+  </Target>
+  <Rule Effect="Deny" RuleId="readAccess">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Guest</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:access" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="readAction">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="guestJournalRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing Read Permission to the Guest on the Journal.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Guest</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Journals</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+  </Target>
+  <Rule Effect="Deny" RuleId="readAccess">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Guest</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:access" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="readAction">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="lectureFacultyAccess" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read, write and delete permissions to the Faculty on Lecture.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Lectures</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">(ORIGINAL|LICENSE|license.txt|None)</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="lectureStudentRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read permission on Lecture to the Students.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Lectures</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description>Rule to check the Group of User.</Description>
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="lectureAdministratorRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read permission on lectures for Administrator.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Lectures</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="checkAction">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="lectureGuestRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read permission on Lectures that allow Guest access to Guests.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Guest</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Lectures</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+  </Target>
+  <Rule Effect="Deny" RuleId="guestAccess">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Guest</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:access" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="checkingAction">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="lectureStudentWrite" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing write permission to Students on Lectures.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Lectures</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">(ORIGINAL|LICENSE|license.txt|None)</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Write</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="checkingTA">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">TA</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-two" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="lectureStudentDelete" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing Delete Permissions to Student on Lectures.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Lectures</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="checkingTA">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">TA</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-two" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorRule">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:author" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:requestor" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="reportsStudentRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read permission on Project Reports to the Students.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Project Reports</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="reportsFacultyRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read permission on Project Reports to Faculty.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Project Reports</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="reportsGuestRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read permission on Project Reports to the Guest.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Guest</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Project Reports</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+  </Target>
+  <Rule Effect="Deny" RuleId="guestAccess">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Guest</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:access" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="actionCheck">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="reportAdministratorRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read permission to administration on Project Reports.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Project Reports</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="actionCheck">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="reportStudentWrite" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing write permissions to Students on Project Reports.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Project Reports</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">(ORIGINAL|LICENSE|license.txt|None)</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Write</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Description>Request must be generated before the Submission Time.</Description>
+    <Target />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="reportFacultyDelete" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing Delete Permission to Faculty on Project Reports.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Project Reports</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Description>Request must be generated before the Submission Time.</Description>
+    <Target />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="reportStudentDelete" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing delete access to Students for Project Reports.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Project Reports</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Description>Request must be generated before the Submission Time.</Description>
+    <Target />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="checkingTA">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">TA</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-two" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="readGuestPaper" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read Permission to the Guest on the Previous Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Guest</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Past Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="readAccess">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Guest</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:access" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="readFacultyPaper" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read Permission to the Faculty on the Previous Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Past Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="readFacultyQuiz" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read Permission to the Faculty on the Quiz.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Quiz</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="readAdministrationQuiz" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read Permission to the Administration on the Quiz.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Quiz</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="readAdministratorPaper" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read Permission to the Administrator on the Previous Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Past Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="readStudentQuiz" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read Permission to the Student on theQuiz.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Quiz</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Description>Request must be generated before the Submission Time.</Description>
+    <Target />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="readStudentPaper" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing read Permission to the Student on the Previous Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Past Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Permit" RuleId="authorizedGroup">
+    <Description>Rule to check whether requestor is from authorized group or not.</Description>
+    <Target>
+      <Subjects>
+        <Subject>
+          <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </SubjectMatch>
+        </Subject>
+      </Subjects>
+    </Target>
+  </Rule>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Description>Request must be generated before the Submission Time.</Description>
+    <Target />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="studentResearchRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing Read Permission to the student on the Research Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Research Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="studentJournalRead" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing Read Permission to the student on the Journal.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Journals</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="studentResearchWrite" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing write Permission to the Student on the Research Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Research Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">(ORIGINAL|LICENSE|license.txt|None)</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Write</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Description>Request must be generated before the Submission Time.</Description>
+    <Target />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="studentResearchDelete" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing delete Permission to the Student on the Research Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Research Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Description>Request must be generated before the Submission Time.</Description>
+    <Target />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+	
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="administratorAllPermissionsOnGroups" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing administrator read, write and delete access on various groups.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Guest</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">TA</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Write</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+	
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="writeFacultyQuiz" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing write Permission to the Faculty on the Quiz.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Quiz</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">(ORIGINAL|LICENSE|license.txt|None)</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Write</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="writeAdministratorPaper" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing write Permission to the Administrator on the Previous Paper.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administrator</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Past Paper</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">(ORIGINAL|LICENSE|license.txt|None)</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Write</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Administration</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
+
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="writeStudentQuiz" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing write permission to the students on Quiz.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Students</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Quiz</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">(ORIGINAL|LICENSE|license.txt|None)</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-regexp-match">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">^((?!(Assignments|Lectures|Project Reports|Past Paper|Quiz|Journals|Research Paper)).)*$</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Write</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">User</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="checkingTA">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">TA</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-two" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+	
+</PolicySet>

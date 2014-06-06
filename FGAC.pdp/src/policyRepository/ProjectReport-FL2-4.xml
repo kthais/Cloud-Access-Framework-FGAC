@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Policy xmlns="urn:oasis:names:tc:xacml:2.0:policy:schema:os" PolicyId="reportFacultyDelete" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+  <Description>Policy for allowing Delete Permission to Faculty on Project Reports.</Description>
+  <Target>
+    <Subjects>
+      <Subject>
+        <SubjectMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Faculty</AttributeValue>
+          <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-one" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </SubjectMatch>
+      </Subject>
+    </Subjects>
+    <Resources>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Project Reports</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+      <Resource>
+        <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">None</AttributeValue>
+          <ResourceAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ResourceMatch>
+      </Resource>
+    </Resources>
+    <Actions>
+      <Action>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Delete</AttributeValue>
+          <ActionAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true" />
+        </ActionMatch>
+      </Action>
+    </Actions>
+  </Target>
+  <Rule Effect="Deny" RuleId="timeRule">
+    <Description>Request must be generated before the Submission Time.</Description>
+    <Target />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-greater-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">09:00:00</AttributeValue>
+          </Apply>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-less-than-or-equal">
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+              <EnvironmentAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time" DataType="http://www.w3.org/2001/XMLSchema#time" />
+            </Apply>
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">17:00:00</AttributeValue>
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Deny" RuleId="authorizedGroup">
+    <Description />
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Controller</AttributeValue>
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:group-zero" DataType="http://www.w3.org/2001/XMLSchema#string" />
+          </Apply>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+  <Rule Effect="Permit" RuleId="defaultRule" />
+</Policy>
+
